@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <div>
+        <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+    </div>
+    <div>
+        <p><strong>First Name:</strong> {{ user.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+        <p><strong>Nationality:</strong> {{ user.nationality }}</p>
+        <p><strong>PAN Number:</strong> {{ user.pan_number }}</p>
+        <p><strong>GSTIN Number:</strong> {{ user.gstin_number }}</p>
+        <p><strong>Description:</strong> {{ user.description }}</p>
+    </div>
+</body>
+</html>

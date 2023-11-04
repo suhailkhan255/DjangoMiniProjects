@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Style for the circular profile picture */
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Profile</h1> <!-- Added a title -->
+
+    <form id="profile-form" method="post" enctype="multipart/form-data" action="{% url 'save_profile' %}">
+        {% csrf_token %}
+        <div class="form-column">
+        <label for="profile_picture">Profile Picture:</label><br>
+        <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required><br><br>
+        <img class="profile-picture" id="profile-image" src="#" alt="User Profile Picture"><br><br>
+
+            <label>What best describes you better:</label><br>
+        <input type="radio" id="buyer" name="description" value="buyer" required>
+        <label for="buyer">Buyer</label><br>
+        <input type="radio" id="seller" name="description" value="seller" required>
+        <label for="seller">Seller</label><br><br>
+        </div>
+
+        <div class="form-column form-columns">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required><br><br>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required><br><br>
+
+        <label for="pan_number">Pan Number:</label>
+        <input type="text" id="pan_number" name="pan_number" required><br><br>
+
+        <label for="gstin_number">GSTIN Number:</label>
+        <input type="text" id="gstin_number" name="gstin_number" required><br><br>
+
+        <input type="submit" value="Save">
+
+        </div>
+    </form>
+
+    <script>
+        // Function to display the selected profile picture
+        document.getElementById('profile-picture').addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profile-image').src = e.target.result;
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+</body>
+</html>
